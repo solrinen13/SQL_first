@@ -32,3 +32,57 @@ from employee
 order by  id;
 
 truncate table employee;
+
+--## 1 Задание
+insert into employee (first_name, last_name, gender, age) values('Мария', 'Долматова','w',45 );
+insert into employee (first_name, last_name, age) values('Antony', 'Smith',45 );
+
+select first_name as имя, last_name as фамилия
+from employee
+
+select first_name as имя, last_name as фамилия
+from employee
+where age < 30 or age > 50;
+
+select first_name as имя, last_name as фамилия
+from employee
+where age >= 30 and age <= 50;
+
+select first_name as имя, last_name as фамилия
+from employee
+order by  фамилия desc;
+
+SELECT *
+FROM employee
+where LENGTH(first_name) > 4;
+
+--## 2 Задание
+
+update employee
+set first_name = 'Mark'
+where id = 14;
+update employee
+
+select first_name as имя, sum(age) as суммарный_возраст
+from employee
+group by first_name
+
+select first_name as имя, age as возраст
+from employee
+where age = (
+    select min(age) as минимальный_возраст
+    from employee);
+
+select first_name as имя, age as возраст
+from employee
+where  first_name = (select distinct first_name from employee )
+
+update employee
+set age= 55
+where id = 14;
+
+select first_name as имя, max(age) as возраст
+from employee e
+group by first_name
+having count(first_name) > 1
+order by возраст
