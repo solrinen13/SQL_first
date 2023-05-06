@@ -88,6 +88,12 @@ having count(first_name) > 1
 order by возраст
 
 
+
+
+
+
+
+
 --Работа с несколькими таблицами
 create table city(
                      city_id bigserial not null primary key,
