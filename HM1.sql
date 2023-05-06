@@ -86,3 +86,42 @@ from employee e
 group by first_name
 having count(first_name) > 1
 order by возраст
+
+
+--Работа с несколькими таблицами
+create table city(
+                     city_id bigserial not null primary key,
+                     city_name varchar(50) not null);
+
+
+ALTER TABLE employee
+    ADD city_id int null
+
+insert into city (city_name) values('London' );
+
+SELECT *
+FROM employee
+
+update  employee
+set city_id = 2
+where id = 17;
+
+ALTER TABLE employee
+    ADD CONSTRAINT employee FOREIGN KEY (city_id)
+        REFERENCES city (city_id)
+
+select *
+from employee
+         inner join city on city.city_id = employee.city_id;
+
+select *
+from city
+         left join employee on city.city_id = employee.city_id;
+
+select *
+from city
+         full join employee on city.city_id = employee.city_id;
+
+select *
+from city
+         cross join employee;
